@@ -10,10 +10,10 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
-        <link rel="canonical" href="https://bactopia.github.io/bactopia/about/">
+        <link rel="canonical" href="https://bactopia.github.io/bactopia/troubleshooting/">
       
       
         <meta name="author" content="Robert A. Petit III">
@@ -42,7 +42,7 @@
     
     
       
-        <title>About - Bactopia</title>
+        <title>Troubleshooting - Bactopia</title>
       
     
     
@@ -108,7 +108,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#about-bactopia" tabindex="1" class="md-skip">
+      <a href="#troubleshooting-bactopia" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -134,7 +134,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                About
+                Troubleshooting
               
             </span>
           
@@ -317,6 +317,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -338,11 +362,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        About
+        Troubleshooting
       </label>
     
-    <a href="./" title="About" class="md-nav__link md-nav__link--active">
-      About
+    <a href="./" title="Troubleshooting" class="md-nav__link md-nav__link--active">
+      Troubleshooting
     </a>
     
       
@@ -356,8 +380,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#workflow-overview" title="Workflow Overview" class="md-nav__link">
-    Workflow Overview
+  <a href="#failed-to-create-conda-environment" title="Failed to create Conda Environment" class="md-nav__link">
+    Failed to create Conda Environment
   </a>
   
 </li>
@@ -406,8 +430,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#workflow-overview" title="Workflow Overview" class="md-nav__link">
-    Workflow Overview
+  <a href="#failed-to-create-conda-environment" title="Failed to create Conda Environment" class="md-nav__link">
+    Failed to create Conda Environment
   </a>
   
 </li>
@@ -428,27 +452,28 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/bactopia/bactopia/edit/master/docs/about.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/bactopia/bactopia/edit/master/docs/troubleshooting.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="about-bactopia">About Bactopia<a class="headerlink" href="#about-bactopia" title="Permanent link">&para;</a></h1>
-<p>We (Tim Read and myself) initially released <a href="https://staphopia.emory.edu/">Staphopia</a> in the summer 
-of 2018, for the analysis of <em>Staphylococcus aureus</em> genomes. At conferences,
-or via email, the most common question about Staphopia that we received was:</p>
-<p><em>"How can I use Staphopia for my bacteria of interest?"</em>.</p>
-<p>We too, have always been interested in this, because we tend to work with other bacteria and would like a standard pipeline for incoming sequencing projects. Given both the community and self interest, we developed Bactopia, <em>a generic pipeline for the analysis of short-read bacterial sequences</em>! </p>
-<p>Side-note... we kept the <em>"-opia"</em> in the name to pay homage to Staphopia!</p>
-<p>While the philosophy behind Staphopia and Bactopia is mostly the same. The
-development of Bactopia from scratch has really allowed us to take what we
-learned from Staphopia and use it to our advantage. Bactopia has been developed
-with usability, portability, and speed in mind from the start.</p>
-<p>Bactopia uses <a href="https://www.nextflow.io/">Nextflow</a> to manage the workflow. We
-have also prioritized software packages available from
-<a href="https://bioconda.github.io/">Bioconda</a> (or other
-<a href="https://anaconda.org/">Anaconda channels</a>) to make installation
-as simple as possible for <em>all</em> users. This has also given us the opportunity to update our workflow with the latest methods.</p>
-<h2 id="workflow-overview">Workflow Overview<a class="headerlink" href="#workflow-overview" title="Permanent link">&para;</a></h2>
-<p><strong>INSERT IMAGE OF WORKFLOW</strong></p>
+                <h1 id="troubleshooting-bactopia">Troubleshooting Bactopia<a class="headerlink" href="#troubleshooting-bactopia" title="Permanent link">&para;</a></h1>
+<p>It was bound to happen, an error has occurred or a bug has shown itself. Now let's see if we can fix it!</p>
+<div class="admonition error">
+<p class="admonition-title">Don't see your error/bug? Post an issue on GitHub</p>
+<p>If you've encountered an error or bug not seen here, please post an issue at <a href="https://github.com/bactopia/bactopia/issues">Bactopia GitHub Issues</a>. This will help greatly to track down the error and fix it!</p>
+</div>
+<h3 id="failed-to-create-conda-environment">Failed to create Conda Environment<a class="headerlink" href="#failed-to-create-conda-environment" title="Permanent link">&para;</a></h3>
+<p>Occasionally on the first run of Bactopia you will encounter this error: 
+<div class="highlight"><pre><span></span>Caused by:
+  Failed to create Conda environment
+  command: conda env create --prefix /data/apps/bactopia/conda/cache/envs/bactopia-gather_fastqs-8bddd22dc63ec39a71c4ea8fd7704f7a --file /data/apps/bactopia/conda/gather_fastqs.yml
+  status : 1
+  message:
+    InvalidArchiveError(&quot;Error with archive /home/rpetit/miniconda3/envs/bactopia/pkgs/python-3.7.3-h33d41f4_1.tar.bz2.  You probably need to delete and re-download or re-create this file.  Message from libarchive was:\n\nFailed to create dir &#39;lib&#39;&quot;,)
+</pre></div></p>
+<p>While it may look like this is related to Nextflow, it is actually a Conda error that occurs when installing multiple environments at once which Nextflow likes to do. This can also occur from a timeout or loss of internet connectivity (under a different error name).</p>
+<p><strong>Recommended Solution</strong><br />
+Using <code>--dry_run</code> at runtime will run Bactopia with dummy data on a single core to prevent parallel creation of conda environments. This process will take only as long as it takes to create the environments.</p>
+<p>If you have suggestions for how to better handle this, check out the submitted <a href="https://github.com/bactopia/bactopia/issues/13">Better handling of conda environments?</a> issue. Your feedback would be greatly appreciated!</p>
                 
                   
                 

@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
         <link rel="canonical" href="https://bactopia.github.io/bactopia/datasets/">
@@ -498,11 +498,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#mapping" title="Mapping" class="md-nav__link">
     Mapping
@@ -514,6 +509,11 @@
   <a href="#reference-genomes" title="Reference Genomes" class="md-nav__link">
     Reference Genomes
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -551,6 +551,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -563,8 +587,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -780,11 +804,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#mapping" title="Mapping" class="md-nav__link">
     Mapping
@@ -796,6 +815,11 @@
   <a href="#reference-genomes" title="Reference Genomes" class="md-nav__link">
     Reference Genomes
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1000,14 +1024,14 @@ example usage:
 </pre></div>
 
 <p>In the <code>insertion-sequences</code> directory you can place FASTA files of insertion seqeunces you would like searched for using <a href="https://github.com/jhawkey/IS_mapper">ISMapper</a>.</p>
-<h3 id="mapping">Mapping<a class="headerlink" href="#mapping" title="Permanent link">&para;</a></h3>
+<h4 id="mapping">Mapping<a class="headerlink" href="#mapping" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span>datasets/species-specific/staphylococcus-aureus/
 └── optional
     └── mapping-sequences
 </pre></div>
 
 <p>In the <code>mapping-sequences</code> directory you can place FASTA files of any nucleotide sequence you would like FASTQ reads to be mapped against using <a href="https://github.com/lh3/bwa">BWA</a>. This can be useful if you are interested if whether a certain region or gene is covered or not.</p>
-<h3 id="reference-genomes">Reference Genomes<a class="headerlink" href="#reference-genomes" title="Permanent link">&para;</a></h3>
+<h4 id="reference-genomes">Reference Genomes<a class="headerlink" href="#reference-genomes" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span>datasets/species-specific/staphylococcus-aureus/
 └── optional
     └── reference-genomes

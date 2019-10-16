@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
         <link rel="canonical" href="https://bactopia.github.io/bactopia/usage-basic/">
@@ -445,6 +445,39 @@
     European Nucleotide Archive
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-accession-list" title="Generating Accession List" class="md-nav__link">
+    Generating Accession List
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" title="Usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -453,15 +486,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-max_cpus-cpus" title="--max_cpus &amp; --cpus" class="md-nav__link">
-    --max_cpus &amp; --cpus
+  <a href="#-genome_size" title="--genome_size" class="md-nav__link">
+    --genome_size
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-clean_cache" title="--clean_cache" class="md-nav__link">
-    --clean_cache
+  <a href="#-max_cpus-cpus" title="--max_cpus &amp; --cpus" class="md-nav__link">
+    --max_cpus &amp; --cpus
   </a>
   
 </li>
@@ -490,6 +523,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -502,8 +559,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -654,6 +711,39 @@
     European Nucleotide Archive
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-accession-list" title="Generating Accession List" class="md-nav__link">
+    Generating Accession List
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" title="Usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -662,15 +752,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-max_cpus-cpus" title="--max_cpus &amp; --cpus" class="md-nav__link">
-    --max_cpus &amp; --cpus
+  <a href="#-genome_size" title="--genome_size" class="md-nav__link">
+    --genome_size
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-clean_cache" title="--clean_cache" class="md-nav__link">
-    --clean_cache
+  <a href="#-max_cpus-cpus" title="--max_cpus &amp; --cpus" class="md-nav__link">
+    --max_cpus &amp; --cpus
   </a>
   
 </li>
@@ -740,8 +830,14 @@ Optional Parameters:
     --coverage INT          Reduce samples to a given coverage
                                 Default: 100x
 
-    --genome_size INT       Expected genome size (bp) for all samples
-                                Default: Mash Estimate
+    --genome_size INT       Expected genome size (bp) for all samples, a value of &#39;0&#39;
+                                will disable read error correction and read subsampling.
+                                Special values (requires --species):
+                                    &#39;min&#39;: uses minimum completed genome size of species
+                                    &#39;median&#39;: uses median completed genome size of species
+                                    &#39;mean&#39;: uses mean completed genome size of species
+                                    &#39;max&#39;: uses max completed genome size of species
+                                Default: Mash estimate
 
     --outdir DIR            Directory to write results to
                                 Default .
@@ -766,8 +862,8 @@ Useful Parameters:
 
     --check_fastqs          Verify &quot;--fastqs&quot; produces the expected inputs
 
-    --clean_cache           Removes &#39;work&#39; and &#39;.nextflow&#39; logs. Caution, if used,
-                                the Nextflow run cannot be resumed.
+    --compress              Compress (gzip) select outputs (e.g. annotation, variant calls)
+                                to reduce overall storage footprint.
 
     --keep_all_files        Keeps all analysis files created. By default, intermediate
                                 files are removed. This will not affect the ability
@@ -826,7 +922,7 @@ test002 /path/to/fastqs/test.fastq.gz
 <p>All lines after the header line, contain unique sample names and location(s) to associated FASTQ file(s). Absolute paths should be used to prevent any <em>file not found</em> errors due to the relative path changing.</p>
 <p>In the example above, two samples would be processed by Bactopia. Sample <code>test001</code> has two FASTQs and would be processed as pair-end reads. While sample <code>test002</code> only has a single FASTQ and would be processed as single-end reads.</p>
 <h5 id="generating-a-fofn">Generating A FOFN<a class="headerlink" href="#generating-a-fofn" title="Permanent link">&para;</a></h5>
-<p>A script named <code>prepare-fofn</code> has been included to help aid (hopefully!) the process of creating a FOFN for your samples. This script will attempt to find FASTQ files in a given directory and output the expected FOFN format. It will also output any potential issues associated with the pattern matching.</p>
+<p><code>bactopia prepare</code> has been included to help aid (hopefully!) the process of creating a FOFN for your samples. This script will attempt to find FASTQ files in a given directory and output the expected FOFN format. It will also output any potential issues associated with the pattern matching.</p>
 <div class="admonition error">
 <p class="admonition-title">Verify accuracy of FOFN</p>
 <p>This is currently an experimental function. There are likely bugs to be ironed out. Please be sure to give the resulting FOFN a quick look over.</p>
@@ -909,6 +1005,109 @@ Exiting
 <p class="admonition-title">Use --accessions for Multiple Experiment Accessions</p>
 <p><code>bactopia --accessions my-accessions.txt</code></p>
 </div>
+<h4 id="generating-accession-list">Generating Accession List<a class="headerlink" href="#generating-accession-list" title="Permanent link">&para;</a></h4>
+<p><code>bactopia search</code> has been made to help assist in generating a list of Experiment accessions to be procesed by Bactopia (via <code>--accessions</code>). Users can provide a Taxon ID (e.g. 1280), a binary name (e.g. Staphylococcus aureus), or Study accessions (e.g. PRJNA480016). This value is then queried against ENA's <a href="https://www.ebi.ac.uk/ena/browse/search-rest">Data Warehouse API</a>), and a list of all Experiment accessions associated with the query is returned.</p>
+<h5 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span>usage: bactopia search [-h] [--exact_taxon] [--outdir OUTPUT_DIRECTORY]
+                       [--prefix PREFIX] [--limit INT] [--version]
+                       STR
+
+bactopia search - Search ENA for associated WGS samples
+
+positional arguments:
+  STR                   Taxon ID or Study accession
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --exact_taxon         Exclude Taxon ID descendents.
+  --outdir OUTPUT_DIRECTORY
+                        Directory to write output. (Default: .)
+  --prefix PREFIX       Prefix to use for output file names. (Default: ena)
+  --limit INT           Maximum number of results to return. (Default:
+                        1000000)
+  --version             show program&#39;s version number and exit
+
+example usage:
+  bactopia search PRJNA480016 --limit 20
+  bactopia search 1280 --exact_taxon --limit 20&#39;
+  bactopia search &quot;staphylococcus aureus&quot; --limit 20
+</pre></div>
+
+<h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span>bactopia search PRJNA480016 --limit 5
+</pre></div>
+
+<p>When completed three files are produced:</p>
+<ol>
+<li><code>ena-accessions.txt</code> - Contains a list of Experiment accessions to be processed.
+   <div class="highlight"><pre><span></span>SRX4563686
+SRX4563689
+SRX4563687
+SRX4563690
+SRX4563688
+</pre></div></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Input for Bactopia</p>
+<p>This file can be used in conjunction with the <code>--accessions</code> parameter for Bactopia processing.</p>
+</div>
+<ol>
+<li>
+<p><code>ena-results.txt</code> - Contains the full results of the API query. This includes multiples fields (sample_accession, tax_id, sample_alias, center_name, etc...)</p>
+</li>
+<li>
+<p><code>ena-summary.txt</code> - Contains a small summary of the completed request
+    <div class="highlight"><pre><span></span>QUERY: (study_accession=PRJNA480016 OR secondary_study_accession=PRJNA480016)
+LIMIT: 5
+RESULTS: 5 (./ena-results.txt)
+ILLUMINA ACCESSIONS: 5 (./ena-accessions.txt)
+</pre></div></p>
+</li>
+</ol>
+<h2 id="-genome_size"><code>--genome_size</code><a class="headerlink" href="#-genome_size" title="Permanent link">&para;</a></h2>
+<p>Throughout the Bactopia workflow a genome size is used for various tasks. By default, a genome size is estimated using Mash. However, users can provide their own value for genome size, use values based on <a href="/datasets/#species-specific">Species Specific Datasets</a>, or completely disable it.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>empty</em></td>
+<td>Mash is used to estimate the genome size</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>Uses the genome size (e.g. <code>--genome_size 2800000</code>) provided by the user</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Read error correct and read subsampling will be disabled.</td>
+</tr>
+<tr>
+<td>min</td>
+<td>Requires <code>--species</code>, the minimum completed genome size for a species is used</td>
+</tr>
+<tr>
+<td>median</td>
+<td>Requires <code>--species</code>, the median completed genome size for a species is used</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>Requires <code>--species</code>, the mean completed genome size for a species is used</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Requires <code>--species</code>, the maximum completed genome size for a species is used</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition error">
+<p class="admonition-title">Mash may not be the most accurate estimate</p>
+<p>Mash is very convenient to quickly estimate a genome size, but it may not be the most accurate in all cases and will differ between samples. It is recommended that when possible a known genome size or one based off completed genomes should be used. </p>
+</div>
 <h2 id="-max_cpus-cpus"><code>--max_cpus</code> &amp; <code>--cpus</code><a class="headerlink" href="#-max_cpus-cpus" title="Permanent link">&para;</a></h2>
 <p>When Nextflow executes, it uses all available cpus to queue up processes. As you might imagine, if you are on a single server with multiple users, this approach of using all cpus might annoy other users! (Whoops sorry!) To circumvent this feature, two parmeters have been included <code>--max_cpus</code> and <code>--cpus</code>.</p>
 <div class="highlight"><pre><span></span>    --max_cpus INT          The maximum number of processors this workflow
@@ -923,10 +1122,6 @@ Exiting
 
 <p>What <code>--max_cpus</code> does is specify to Nextflow the maximum number of cpus it is allowed to occupy at any given time. <code>--cpus</code> on the other hand, specifies how many cpus any given step (qc, assembly, annotation, etc...) can occupy. </p>
 <p>By default <code>--max_cpus</code> is set to 1 and if <code>--cpus</code> is set to a value greater than <code>--max_cpus</code> it will be set equal to <code>--max_cpus</code>. This appoach errs on the side of caution, by not occupying all cpus on the server without the user's consent!</p>
-<h2 id="-clean_cache"><code>--clean_cache</code><a class="headerlink" href="#-clean_cache" title="Permanent link">&para;</a></h2>
-<p>Bactopia will keep Nextflow's <em>work</em> cache even after successfully completing. While the cache is maintained Bactopia is resumable using the <code>-resume</code> parameter. This does however introduce a potentential storage overhead. The cache will contain multiple intermediate files (e.g. uncompressed FASTQs, BAMs, etc...) for each sample that was processed. In other words, it can get pretty large!</p>
-<p>If you would like to clean up the cache you can use <code>--clean_cache</code>. This will remove the cache <strong>only</strong> after a successful execution (e.g. everything thing finished without errors). This is accomplished by removing the <code>work</code> directory created by Nextflow. As you might have guessed, by using removing the cache, Bactopia will no longer be resumeable.</p>
-<p>At the end of the day, you can always decide to not use <code>--clean_cache</code> and manually remove the <code>work</code> directory when you feel it is safe!</p>
 <h2 id="-keep_all_files"><code>--keep_all_files</code><a class="headerlink" href="#-keep_all_files" title="Permanent link">&para;</a></h2>
 <p>In some processes, Bactopia will delete large intermediate files (e.g. multiple uncompressed FASTQs) <strong>only</strong> after a process successfully completes. Since this a per-process function, it does not affect Nextflow's ability to resume (<code>-resume</code>)a workflow. You can deactivate this feature using <code>--keep_all_files</code>. Please, keep in mind the <em>work</em> directory is already large, this will make it 2-3 times larger.</p>
                 
@@ -964,13 +1159,13 @@ Exiting
           </a>
         
         
-          <a href="../usage-complete/" title="Complete Usage" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../workflow-overview/" title="Workflow Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Complete Usage
+                Workflow Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

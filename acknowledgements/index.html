@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
         <link rel="canonical" href="https://bactopia.github.io/bactopia/acknowledgements/">
@@ -317,6 +317,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -329,8 +353,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -402,8 +426,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#programs-included-in-bactopia" title="Programs Included In Bactopia" class="md-nav__link">
-    Programs Included In Bactopia
+  <a href="#software-included-in-bactopia" title="Software Included In Bactopia" class="md-nav__link">
+    Software Included In Bactopia
   </a>
   
 </li>
@@ -474,8 +498,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#programs-included-in-bactopia" title="Programs Included In Bactopia" class="md-nav__link">
-    Programs Included In Bactopia
+  <a href="#software-included-in-bactopia" title="Software Included In Bactopia" class="md-nav__link">
+    Software Included In Bactopia
   </a>
   
 </li>
@@ -508,7 +532,8 @@ owe you a beer 🍻 (or coffee ☕!) if we ever encounter one another in person.
 Really, thank you very much!</p>
 <div class="admonition info">
 <p class="admonition-title">Please Cite Datasets and Tools</p>
-<p>If you have used Bactopia in your work, please be sure to cite any datasets or tools you may have used. A citation link for each dataset/tool has been made available.</p>
+<p>If you have used Bactopia in your work, please be sure to cite any datasets or software you may have used. A citation link for each dataset/software has been made available.</p>
+<p>A BibTeX file of each citation is also available at <a href="https://github.com/bactopia/bactopia/blob/master/docs/data/bactopia-datasets-software.bib">Bactopia Datasets and Software BibTeX</a></p>
 </div>
 <h2 id="public-datasets">Public Datasets<a class="headerlink" href="#public-datasets" title="Permanent link">&para;</a></h2>
 <p>Below is a list of public datasets (alphabetical) that could have potentially 
@@ -533,6 +558,10 @@ Antimicrob. Agents Chemother. 57, 3348–3357 (2013).</em>  </p>
 <em>Lakin, S. M. et al. <a href="http://www.ncbi.nlm.nih.gov/pubmed/27899569">MEGARes: an antimicrobial resistance database for high 
 throughput sequencing</a>. 
 Nucleic Acids Res. 45, D574–D580 (2017).</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA313047">NCBI Reference Gene Catalog</a></strong><br />
+<em>Feldgarden, M. et al. <a href="https://doi.org/10.1128/AAC.00483-19">Validating the NCBI AMRFinder Tool and Resistance Gene Database Using Antimicrobial Resistance Genotype-Phenotype Correlations in a Collection of NARMS Isolates</a>. Antimicrob. Agents Chemother. (2019)</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://cge.cbs.dtu.dk/services/PlasmidFinder/">plasmidfinder</a></strong><br />
@@ -598,13 +627,18 @@ software, the PubMLST.org website and their applications</a>.
 Wellcome Open Res 3, 124 (2018).</em>  </p>
 </li>
 </ul>
-<h2 id="programs-included-in-bactopia">Programs Included In Bactopia<a class="headerlink" href="#programs-included-in-bactopia" title="Permanent link">&para;</a></h2>
-<p>Below is a list of tools (alphabetical) <em>directly</em> called by Bactopia. A link to software page as well as the citation (if available) has been included.</p>
+<h2 id="software-included-in-bactopia">Software Included In Bactopia<a class="headerlink" href="#software-included-in-bactopia" title="Permanent link">&para;</a></h2>
+<p>Below is a list of software (alphabetical) used (directly and indirectly) by Bactopia. A link to the software page as well as the citation (if available) have been included.</p>
 <ul>
 <li>
 <p><strong><a href="https://github.com/ncbi/amr">AMRFinderPlus</a></strong><br />
 Find acquired antimicrobial resistance genes and some point mutations in protein or assembled nucleotide sequences.<br />
 <em>Feldgarden, M. et al. <a href="https://doi.org/10.1128/AAC.00483-19">Validating the NCBI AMRFinder Tool and Resistance Gene Database Using Antimicrobial Resistance Genotype-Phenotype Correlations in a Collection of NARMS Isolates</a>. Antimicrob. Agents Chemother. (2019)</em>  </p>
+</li>
+<li>
+<p><strong><a href="http://130.235.244.92/ARAGORN/Downloads/">Aragorn</a></strong><br />
+Finds transfer RNA features (tRNA)<br />
+<em>Laslett D. and B. Canback, <a href="https://doi.org/10.1093/nar/gkh152">ARAGORN, a program to detect tRNA genes and tmRNA genes in nucleotide sequences.</a> Nucleic Acids Res. 32(1):11-6. (2004)</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/sanger-pathogens/ariba">Ariba</a></strong><br />
@@ -614,15 +648,25 @@ sequencing reads</a>.
 Microb Genom 3, e000131 (2017).</em>  </p>
 </li>
 <li>
-<p><strong><a href="https://github.com/rpetit3/assembly-scan">Assembly-Scan</a></strong><br />
+<p><strong><a href="https://github.com/rpetit3/assembly-scan">assembly-scan</a></strong><br />
 Generate basic stats for an assembly.<br />
-<em>Petit III, R.A. <a href="https://github.com/rpetit3/assembly-scan">assembly-scan: generate basic stats for an 
+<em>Petit III, R. A. <a href="https://github.com/rpetit3/assembly-scan">assembly-scan: generate basic stats for an 
 assembly</a>.</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/tseemann/barrnap">Barrnap</a></strong><br />
+Bacterial ribosomal RNA predictor<br />
+<em>Seemann, T. <a href="https://github.com/tseemann/barrnap">Barrnap: Bacterial ribosomal RNA predictor</a></em>  </p>
 </li>
 <li>
 <p><strong><a href="https://jgi.doe.gov/data-and-tools/bbtools/">BBTools</a></strong><br />
 BBTools is a suite of fast, multithreaded bioinformatics tools designed for analysis of DNA and RNA sequence data.<br />
-<em>Bushnell B. <a href="http://sourceforge.net/projects/bbmap/">BBMap short read aligner, and other bioinformatic tools.</a></em>  </p>
+<em>Bushnell, B. <a href="http://sourceforge.net/projects/bbmap/">BBMap short read aligner, and other bioinformatic tools.</a></em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/samtools/bcftools">BCFtools</a></strong><br />
+Utilities for variant calling and manipulating VCFs and BCFs.<br />
+<em>Danecek, P. et al. <a href="http://github.com/samtools/bcftools">BCFtools - Utilities for variant calling and manipulating VCFs and BCFs.</a></em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/arq5x/bedtools2">Bedtools</a></strong><br />
@@ -654,20 +698,44 @@ sequencing data</a>.
 Bioinformatics 28, 3150–3152 (2012).</em>  </p>
 </li>
 <li>
-<p><strong><a href="https://github.com/s-andrews/FastQC">FastQC</a></strong><br />
-A quality control analysis tool for high throughput sequencing data.<br />
-<em>Andrews, S. FastQC: a quality control tool for high throughput sequence data.
-(<a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc">http://www.bioinformatics.babraham.ac.uk/projects/fastqc</a>).</em>  </p>
+<p><strong><a href="https://github.com/rpetit3/ena-dl">ena-dl</a></strong><br />
+Download FASTQ files from ENA and group runs by Experiment accession.<br />
+<em>Petit III, R. A. <a href="https://github.com/rpetit3/ena-dl">ena-dl: download FASTQs from the European Nucleotide Archive.</a></em>  </p>
 </li>
 <li>
-<p><strong><a href="https://github.com/rpetit3/fastq-scan">Fastq-Scan</a></strong><br />
+<p><strong><a href="https://github.com/s-andrews/FastQC">FastQC</a></strong><br />
+A quality control analysis tool for high throughput sequencing data.<br />
+<em>Andrews, S. <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc">FastQC: a quality control tool for high throughput sequence data.</a>.</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/rpetit3/fastq-scan">fastq-scan</a></strong><br />
 Output FASTQ summary statistics in JSON format<br />
-<em>Petit III, R.A. <a href="https://github.com/rpetit3/fastq-scan">fastq-scan: generate summary statistics of input FASTQ sequences.</a></em>  </p>
+<em>Petit III, R. A. <a href="https://github.com/rpetit3/fastq-scan">fastq-scan: generate summary statistics of input FASTQ sequences.</a></em>  </p>
+</li>
+<li>
+<p><strong><a href="https://ccb.jhu.edu/software/FLASH/">FLASH</a></strong><br />
+A fast and accurate tool to merge paired-end reads.<br />
+<em>Magoč, T., and S. L. Salzberg, <a href="https://doi.org/10.1093/bioinformatics/btr507">FLASH: fast length adjustment of short reads to improve genome assemblies.</a> Bioinformatics 27.21 (2011): 2957-2963.</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/ekg/freebayes">freebayes</a></strong><br />
+Bayesian haplotype-based genetic polymorphism discovery and genotyping<br />
+<em>Garrison E., and G. Marth, <a href="https://arxiv.org/abs/1207.3907">Haplotype-based variant detection from short-read sequencing.</a> arXiv preprint arXiv:1207.3907 [q-bio.GN] (2012)</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://www.gnu.org/software/parallel/">GNU Parallel</a></strong><br />
-GNU parallel is a shell tool for executing jobs in parallel using one or more computers.<br />
+A shell tool for executing jobs in parallel<br />
 <em>Tange, O. <a href="https://doi.org/10.5281/zenodo.1146014">GNU Parallel</a> 2018, March 2018</em>  </p>
+</li>
+<li>
+<p><strong><a href="http://hmmer.org/">HMMER</a></strong><br />
+Biosequence analysis using profile hidden Markov models<br />
+<em>Finn R. D. et al. <a href="https://doi.org/10.1093/nar/gkr367">HMMER web server: interactive sequence similarity searching.</a> Nucleic Acids Res. ;39:W29-37. (2011)</em>  </p>
+</li>
+<li>
+<p><strong><a href="http://eddylab.org/infernal/">Infernal</a></strong><br />
+Searches DNA sequence databases for RNA structure and sequence similarities<br />
+<em>Nawrocki, E. P., and S. R. Eddy, <a href="https://doi.org/10.1093/bioinformatics/btt509">Infernal 1.1: 100-fold faster RNA homology searches.</a> Bioinformatics, 29(22), 2933-2935. (2013)</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/jhawkey/IS_mapper">ISMapper</a></strong><br />
@@ -679,7 +747,7 @@ BMC Genomics 16, 667 (2015).</em>  </p>
 <li>
 <p><strong><a href="https://github.com/mourisl/Lighter">Lighter</a></strong><br />
 Fast and memory-efficient sequencing error corrector<br />
-<em>Song, L., Florea, L. and Langmead, B., <a href="http://genomebiology.com/2014/15/11/509/">Lighter: Fast and Memory-efficient Sequencing Error Correction without Counting</a>. Genome Biol. 2014 Nov 15;15(11):509.</em></p>
+<em>Song, L., Florea, L. and B. Langmead, <a href="http://genomebiology.com/2014/15/11/509/">Lighter: Fast and Memory-efficient Sequencing Error Correction without Counting</a>. Genome Biol. 2014 Nov 15;15(11):509.</em></p>
 </li>
 <li>
 <p><strong><a href="https://github.com/marbl/Mash">Mash</a></strong><br />
@@ -689,14 +757,29 @@ estimation using MinHash</a>.
 Genome Biol. 17, 132 (2016).</em><br />
 <em>Ondov, B. D. et al. <a href="http://dx.doi.org/10.1101/557314">Mash Screen: High-throughput sequence 
 containment estimation for genome discovery</a>. 
-bioRxiv 557314 (2019). doi:10.1101/557314</em>  </p>
+bioRxiv 557314 (2019).</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/mcveanlab/mccortex">McCortex</a></strong><br />
 De novo genome assembly and multisample variant calling<br />
-<em>Turner, I., Garimella, K. V., Iqbal, Z. &amp; McVean, G. <a href="http://dx.doi.org/10.1093/bioinformatics/bty157">Integrating long-range 
+<em>Turner, I., Garimella, K. V., Iqbal, Z. and G. McVean, <a href="http://dx.doi.org/10.1093/bioinformatics/bty157">Integrating long-range 
 connectivity information into de Bruijn graphs.</a> 
 Bioinformatics 34, 2556–2565 (2018).</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/voutcn/megahit">MEGAHIT</a></strong><br />
+Ultra-fast and memory-efficient (meta-)genome assembler<br />
+<em>Li, D., et al. <a href="https://doi.org/10.1093/bioinformatics/btv033">MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph.</a> Bioinformatics 31.10 (2015): 1674-1676.</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/ctSkennerton/minced">MinCED</a></strong><br />
+Mining CRISPRs in Environmental Datasets<br />
+<em>Skennerton, C. <a href="https://github.com/ctSkennerton/minced">MinCED: Mining CRISPRs in Environmental Datasets</a></em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/lh3/minimap2">Minimap2</a></strong>
+A versatile pairwise aligner for genomic and spliced nucleotide sequences<br />
+<em>Li, H. <a href="https://doi.org/10.1093/bioinformatics/bty191">Minimap2: pairwise alignment for nucleotide sequences.</a> Bioinformatics, 34:3094-3100. (2018)</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/kblin/ncbi-genome-download">NCBI Genome Download</a></strong><br />
@@ -707,12 +790,22 @@ servers</a></em>  </p>
 <li>
 <p><strong><a href="https://github.com/nextflow-io/nextflow">Nextflow</a></strong><br />
 A DSL for data-driven computational pipelines.<br />
-<em>Di Tommaso, P., Chatzou, M., Floden, E.W., Barja, P.P., Palumbo, E., Notredame, C., 2017. <a href="https://www.nature.com/articles/nbt.3820.pdf?origin=ppub">Nextflow enables reproducible computational workflows.</a> Nat. Biotechnol. 35, 316–319.</em></p>
+<em>Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P.P., Palumbo, E., Notredame, C., 2017. <a href="https://www.nature.com/articles/nbt.3820.pdf?origin=ppub">Nextflow enables reproducible computational workflows.</a> Nat. Biotechnol. 35, 316–319.</em></p>
 </li>
 <li>
 <p><strong><a href="https://zlib.net/pigz/">Pigz</a></strong><br />
 A parallel implementation of gzip for modern multi-processor, multi-core machines.<br />
-<em>Adler, Mark. <a href="https://zlib.net/pigz/">pigz: A parallel implementation of gzip for modern multi-processor, multi-core machines.</a> Jet Propulsion Laboratory (2015).</em>  </p>
+<em>Adler, M. <a href="https://zlib.net/pigz/">pigz: A parallel implementation of gzip for modern multi-processor, multi-core machines.</a> Jet Propulsion Laboratory (2015).</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/broadinstitute/pilon/">Pilon</a></strong><br />
+An automated genome assembly improvement and variant detection tool<br />
+<em>Walker, B. J., et al. <a href="https://doi.org/10.1371/journal.pone.0112963">Pilon: an integrated tool for comprehensive microbial variant detection and genome assembly improvement.</a> PloS one 9.11 (2014): e112963.</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/hyattpd/Prodigal">Prodigal</a></strong><br />
+Fast, reliable protein-coding gene prediction for prokaryotic genomes.<br />
+<em>Hyatt, D., et al. <a href="https://doi.org/10.1186/1471-2105-11-119">Prodigal: prokaryotic gene recognition and translation initiation site identification.</a> BMC Bioinformatics 11.1 (2010): 119.</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/tseemann/prokka">Prokka</a></strong><br />
@@ -721,8 +814,18 @@ Rapid prokaryotic genome annotation<br />
 Bioinformatics 30, 2068–2069 (2014).</em>  </p>
 </li>
 <li>
+<p><strong><a href="http://www.cbs.dtu.dk/services/RNAmmer/">RNAmmer</a></strong><br />
+Consistent and rapid annotation of ribosomal RNA genes<br />
+<em>Lagesen, K., et al. <a href="https://dx.doi.org/10.1093%2Fnar%2Fgkm160">RNAmmer: consistent annotation of rRNA genes in genomic sequences.</a> Nucleic Acids Res 35.9: 3100-3108. (2007)</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/tseemann/samclip">samclip</a></strong><br />
+Filter SAM file for soft and hard clipped alignments<br />
+<em>Seemann, T. <a href="https://github.com/tseemann/samclip">Samclip: Filter SAM file for soft and hard clipped alignments</a></em>  </p>
+</li>
+<li>
 <p><strong><a href="https://github.com/samtools/samtools">Samtools</a></strong><br />
-Tools (written in C using htslib) for manipulating next-generation sequencing data<br />
+Tools for manipulating next-generation sequencing data<br />
 <em>Li, H. et al. <a href="http://dx.doi.org/10.1093/bioinformatics/btp352">The Sequence Alignment/Map format and SAMtools</a>. 
 Bioinformatics 25, 2078–2079 (2009).</em></p>
 </li>
@@ -734,25 +837,70 @@ A fast and lightweight tool for processing sequences in the FASTA or FASTQ forma
 <li>
 <p><strong><a href="https://github.com/tseemann/shovill">Shovill</a></strong><br />
 Faster assembly of Illumina reads<br />
-<em>Seemann, T. <a href="https://github.com/tseemann/shovill">De novo assembly pipeline for Illumina paired reads</a></em>  </p>
+<em>Seemann, T. <a href="https://github.com/tseemann/shovill">Shovill: De novo assembly pipeline for Illumina paired reads</a></em>  </p>
+</li>
+<li>
+<p><strong><a href="http://www.cbs.dtu.dk/services/SignalP-4.0/">SignalP</a></strong><br />
+Finds signal peptide features in CDS<br />
+<em>Petersen, T. N., et al. <a href="https://doi.org/10.1038/nmeth.1701">SignalP 4.0: discriminating signal peptides from transmembrane regions.</a> Nature methods 8.10: 785.(2011)</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/ncbi/SKESA">SKESA</a></strong><br />
+Strategic Kmer Extension for Scrupulous Assemblies<br />
+<em>Souvorov, A., Agarwala, R. and D. J. Lipman. <a href="https://doi.org/10.1186/s13059-018-1540-z">SKESA: strategic k-mer extension for scrupulous assemblies.</a> Genome Biology 19:153 (2018)._</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/tseemann/snippy">Snippy</a></strong><br />
 Rapid haploid variant calling and core genome alignment<br />
-<em>Seemann, T. <a href="https://github.com/tseemann/snippy">snippy: fast bacterial variant calling from NGS reads</a>
+<em>Seemann, T. <a href="https://github.com/tseemann/snippy">Snippy: fast bacterial variant calling from NGS reads</a>
 (2015)</em>  </p>
+</li>
+<li>
+<p><strong><a href="http://snpeff.sourceforge.net/">SnpEff</a></strong><br />
+Genomic variant annotations and functional effect prediction toolbox.<br />
+<em>Cingolani, P., et al. <a href="https://doi.org/10.4161/fly.19695">A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.</a> Fly, 6(2), 80-92 (2012)</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/sanger-pathogens/snp-sites">SNP-sites</a></strong><br />
+Rapidly extracts SNPs from a multi-FASTA alignment.<br />
+<em>Page, A. J., et al. <a href="https://dx.doi.org/10.1099%2Fmgen.0.000056">SNP-sites: rapid efficient extraction of SNPs from multi-FASTA alignments.</a> Microbial Genomics 2.4 (2016).</em>  </p>
 </li>
 <li>
 <p><strong><a href="https://github.com/dib-lab/sourmash">Sourmash</a></strong><br />
 Compute and compare MinHash signatures for DNA data sets.<br />
-<em>Titus Brown, C. &amp; Irber, L. <a href="http://dx.doi.org/10.21105/joss.00027">sourmash: a library for MinHash sketching 
+<em>Titus Brown, C. and L. Irber <a href="http://dx.doi.org/10.21105/joss.00027">sourmash: a library for MinHash sketching 
 of DNA</a>. JOSS 1, 27 (2016).</em>  </p>
 </li>
 <li>
+<p><strong><a href="https://github.com/ablab/spades">SPAdes</a></strong><br />
+An assembly toolkit containing various assembly pipelines.<br />
+<em>Bankevich, A., et al. <a href="https://doi.org/10.1089/cmb.2012.0021">SPAdes: a new genome assembly algorithm and its applications to single-cell sequencing.</a> Journal of computational biology 19.5 (2012): 455-477.</em>  </p>
+</li>
+<li>
+<p><strong><a href="http://www.usadellab.org/cms/index.php?page=trimmomatic">Trimmomatic</a></strong><br />
+A flexible read trimming tool for Illumina NGS data<br />
+<em>Bolger, A. M., Lohse, M., and B. Usadel. <a href="https://doi.org/10.1093/bioinformatics/btu170">Trimmomatic: a flexible trimmer for Illumina sequence data.</a> Bioinformatics 30.15 (2014): 2114-2120.</em>  </p>
+</li>
+<li>
 <p><strong><a href="https://github.com/rpetit3/vcf-annotator">VCF-Annotator</a></strong><br />
-Add biological annotations to variants in a given VCF file.<br />
-<em>Petit III, R.A. <a href="https://github.com/rpetit3/vcf-annotator">VCF-Annotator: Add biological annotations to variants 
-in a given VCF file.</a>.</em>  </p>
+Add biological annotations to variants in a VCF file.<br />
+<em>Petit III, R. A. <a href="https://github.com/rpetit3/vcf-annotator">VCF-Annotator: Add biological annotations to variants 
+in a VCF file.</a>.</em>  </p>
+</li>
+<li>
+<p><strong><a href="">Vcflib</a></strong><br />
+a simple C++ library for parsing and manipulating VCF files<br />
+<em>Garrison, E. <a href="https://github.com/vcflib/vcflib">Vcflib: A C++ library for parsing and manipulating VCF files</a></em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/dzerbino/velvet">Velvet</a></strong><br />
+Short read de novo assembler using de Bruijn graphs<br />
+<em>Zerbino, D. R., and E. Birney. <a href="http://www.genome.org/cgi/doi/10.1101/gr.074492.107">Velvet: algorithms for de novo short read assembly using de Bruijn graphs.</a> Genome research 18.5 (2008): 821-829.</em>  </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/atks/vt">vt</a></strong><br />
+A tool set for short variant discovery in genetic sequence data.<br />
+<em>Tan, A., Abecasis, G. R., and H. M. Kang, <a href="https://doi.org/10.1093/bioinformatics/btv112">Unified representation of genetic variants.</a> Bioinformatics, 31(13), 2202-2204. (2015)</em>  </p>
 </li>
 </ul>
                 
@@ -775,7 +923,7 @@ in a given VCF file.</a>.</em>  </p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../about/" title="About" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../troubleshooting/" title="Troubleshooting" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -784,7 +932,7 @@ in a given VCF file.</a>.</em>  </p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                About
+                Troubleshooting
               </span>
             </div>
           </a>

@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
         <link rel="canonical" href="https://bactopia.github.io/bactopia/installation/">
@@ -303,8 +303,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker" title="Docker" class="md-nav__link">
-    Docker
+  <a href="#container" title="Container" class="md-nav__link">
+    Container
   </a>
   
 </li>
@@ -362,6 +362,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -374,8 +398,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -420,8 +444,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker" title="Docker" class="md-nav__link">
-    Docker
+  <a href="#container" title="Container" class="md-nav__link">
+    Container
   </a>
   
 </li>
@@ -464,9 +488,13 @@ Bactopia. To do so, you can use the following command:</p>
 
 <p>And voilà, you are all set to get started processing your data!</p>
 <p>But first, it is highly recommended that you take the time to <a href="../datasets/">Build Datasets</a> that Bactopia can take advantage of.</p>
-<h2 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
-<p>A Docker container, that is also Singularity compatible, has been created that is based off the Conda install.</p>
-<div class="highlight"><pre><span></span>docker pull bactopia/bactopia
+<h2 id="container">Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h2>
+<p>A Docker and Singularity container has been created that is based off the Conda install.</p>
+<div class="highlight"><pre><span></span># Docker 
+docker pull bactopia/bactopia
+
+# Singularity
+singularity pull library://rpetit3/bactopia/bactopia
 </pre></div>
                 
                   

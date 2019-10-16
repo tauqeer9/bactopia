@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
         <link rel="canonical" href="https://bactopia.github.io/bactopia/tutorial/">
@@ -452,6 +452,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -464,8 +488,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -660,7 +684,7 @@ conda activate bactopia
 <p>Now we are ready to build our datasets!</p>
 <div class="highlight"><pre><span></span>bactopia datasets datasets/ --ariba &quot;vfdb_core,card&quot; \
                             --species &quot;Staphylococcus aureus&quot; \
-                            --include_genus
+                            --include_genus \
                             --cpus 4
 </pre></div>
 
@@ -716,19 +740,21 @@ rm -rf bactopia-datasets/
 <p>The <strong>approximate completion time is ~15-30 minutes</strong> depending on the number of cpus given and download times from ENA.</p>
 <p>Once complete, the results from numerous tools available to you in <code>ena-single-sample/SRX4563634/</code>. </p>
 <h4 id="multiple-samples">Multiple Samples<a class="headerlink" href="#multiple-samples" title="Permanent link">&para;</a></h4>
-<p>Now we are going to have Bactopia download and process 5 samples from ENA. To do this we will need to create a text file with a list of Experiment accessions we want to process.</p>
-<div class="highlight"><pre><span></span>printf &quot;SRX4563678\nSRX4563679\nSRX4563680\nSRX4563681\nSRX4563682\n&quot; &gt; accessions.txt
+<p>Now we are going to have Bactopia download and process 5 samples from ENA. To do this we can use the <code>bactopia search</code> function.</p>
+<div class="highlight"><pre><span></span>bactopia search PRJNA480016 --limit 5
 </pre></div>
 
-<p><strong>accessions.txt</strong> will now have five Experiment accessions, a single one per line. Just like this:
-<div class="highlight"><pre><span></span>SRX4563678
-SRX4563679
-SRX4563680
-SRX4563681
-SRX4563682
+<p>This will produce three files: <code>ena-accessions.txt</code>, <code>ena-results.txt</code> and <code>ena-summary.txt</code>. To learn more about these files see <a href="/usage-basic/#generating-accession-list">Generating Accession List</a>.</p>
+<p>For this tutorial, <code>ena-accessions.txt</code> is the file we need. It contains five Experiment accessions, a single one per line. Just like this:
+<div class="highlight"><pre><span></span>SRX4563688
+SRX4563687
+SRX4563686
+SRX4563689
+SRX4563690
 </pre></div></p>
-<p>To process these 5 samples, we will adjust our command used previously.</p>
-<div class="highlight"><pre><span></span>bactopia --accessions accessions.txt \
+<p><em>Note: you may have 5 different accessions from the PRJNA480016 project.</em></p>
+<p>To process these samples, we will adjust our command used previously.</p>
+<div class="highlight"><pre><span></span>bactopia --accessions ena-accessions.txt \
          --dataset datasets/ \
          --species staphylococcus-aureus \
          --coverage 100 \
@@ -738,7 +764,7 @@ SRX4563682
          --outdir ena-multiple-samples
 </pre></div>
 
-<p>Instead of <code>--accession</code> we are now using <code>--accessions accession.txt</code> which tells Bactopia to read <code>accessions.txt</code>, and for each Experiment accession download in from ENA and then process it.</p>
+<p>Instead of <code>--accession</code> we are now using <code>--accessions ena-accessions.txt</code> which tells Bactopia to read <code>ena-accessions.txt</code>, and download each Experiment accession from ENA and then process it.</p>
 <p>At this point, you might want to go for a walk or make yourself a coffee! This step has an <strong>approximate completion time of ~45-120 minutes</strong>, which again is fully dependent on the cpus used and the download times from ENA.</p>
 <p>Once this is complete, the results for all five samples will be found in the <code>ena-multiple-samples</code> directory. Each sample will have there own folder of results.</p>
 <h3 id="local-samples">Local Samples<a class="headerlink" href="#local-samples" title="Permanent link">&para;</a></h3>
@@ -746,12 +772,10 @@ SRX4563682
 <p>First let's make a directory to put the FASTQs into:
 <div class="highlight"><pre><span></span>mkdir fastqs
 </pre></div></p>
-<p>Now let's move some of the FASTQs from our ENA samples into this folder.
+<p>Now let's move some the FASTQs from our SRX4563634 sample into this folder.
 <div class="highlight"><pre><span></span>cp ena-single-sample/SRX4563634/quality-control/SRX4563634*.fastq.gz fastqs/
-cp ena-multiple-samples/SRX4563680/quality-control/SRX4563680*.fastq.gz fastqs/
-cp ena-multiple-samples/SRX4563682/quality-control/SRX4563682*.fastq.gz fastqs/
 </pre></div></p>
-<p>Finally let's make one of these paired-end reads into a single-end read (don't tell on me!).
+<p>Finally let's also make a single-end version of SRX4563634.
 <div class="highlight"><pre><span></span>cat fastqs/SRX4563634*.fastq.gz &gt; fastqs/SRX4563634-SE.fastq.gz
 </pre></div></p>
 <p>OK! Now we are ready to continue the tutorial!</p>
@@ -818,6 +842,7 @@ cp ena-multiple-samples/SRX4563682/quality-control/SRX4563682*.fastq.gz fastqs/
 </div>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <p>That should do it! Hopefully you have succeeded (yay! 🎉) and would like to use Bactopia on your own data! </p>
+<p>In this tutorial we covered how to build datasets (<code>bactopia datasets</code>) and how process samples. We also covered the <code>bactopia search</code> and <code>bactopia prepare</code> to prepare file for multiple sample processing.</p>
 <p>If your ran into any issues, please let me know by submitting a <a href="https://github.com/bactopia/bactopia/issues">GitHub Issue</a>.</p>
                 
                   

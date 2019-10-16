@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="A generic pipeline for the analysis of short-read bacterial sequences.">
+        <meta name="description" content="An extensive workflow to process Illumina sequencing for bacterial genomes.">
       
       
         <link rel="canonical" href="https://bactopia.github.io/bactopia/quick-start/">
@@ -409,6 +409,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../workflow-overview/" title="Workflow Overview" class="md-nav__link">
+      Workflow Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../output-overview/" title="Output Overview" class="md-nav__link">
+      Output Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../usage-complete/" title="Complete Usage" class="md-nav__link">
       Complete Usage
     </a>
@@ -421,8 +445,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="About" class="md-nav__link">
-      About
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
     </a>
   </li>
 
@@ -542,7 +566,7 @@
                 <h1 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h1>
 <p>Here we go! No time to waste, let's get the ball rolling! Why are you still reading this?!? Go! Go! Go!</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span>conda create -n bactopia -c conda-forge -c bioconda bactopia
+<div class="highlight"><pre><span></span>conda create -y -n bactopia -c conda-forge -c bioconda bactopia
 conda activate bactopia
 </pre></div>
 
@@ -550,6 +574,15 @@ conda activate bactopia
 <div class="highlight"><pre><span></span>bactopia datasets datasets/
 </pre></div>
 
+<p>This will build the following datasets:</p>
+<ul>
+<li><a href="https://card.mcmaster.ca/">CARD</a></li>
+<li><a href="http://www.mgc.ac.cn/VFs/">VFDB</a></li>
+<li><a href="https://mash.readthedocs.io/en/latest/data.html">RefSeq Mash Sketch</a></li>
+<li><a href="https://sourmash.readthedocs.io/en/latest/datasets.html?highlight=--track-abundance#genbank-lca-dataset">GenBank Sourmash Signatures</a></li>
+<li><a href="https://ccb-microbe.cs.uni-saarland.de/plsdb/plasmids/download/">PLSDB Mash Sketch &amp; BLAST</a></li>
+</ul>
+<p>More information about these datasets is available at <a href="/datasets/">Build Datasets</a>.</p>
 <h2 id="run-bactopia">Run Bactopia!<a class="headerlink" href="#run-bactopia" title="Permanent link">&para;</a></h2>
 <h3 id="single-sample">Single Sample<a class="headerlink" href="#single-sample" title="Permanent link">&para;</a></h3>
 <h4 id="paired-end">Paired-End<a class="headerlink" href="#paired-end" title="Permanent link">&para;</a></h4>
@@ -562,7 +595,7 @@ conda activate bactopia
 </pre></div>
 
 <h3 id="multiple-samples">Multiple Samples<a class="headerlink" href="#multiple-samples" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>fastqs-fofn directory-of-fastqs/ &gt; fastqs.txt
+<div class="highlight"><pre><span></span>bactopia prepare directory-of-fastqs/ &gt; fastqs.txt
 bactopia --fastqs fastqs.txt --dataset datasets --outdir ${OUTDIR}
 </pre></div>
                 
