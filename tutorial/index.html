@@ -693,7 +693,7 @@ conda activate bactopia
 <p><code>--ariba "vfdb_core,card"</code> says to download and setup the <a href="http://www.mgc.ac.cn/VFs/">VFDB Core</a> and the <a href="https://card.mcmaster.ca/">CARD</a> databases to be used by Ariba.</p>
 <p><code>--species "Staphylococcus aureus"</code> will download MLST schemas associated with <em>S. aureus</em> it will also download completed <em>S. aureus</em> genomes (RefSeq only) that are used to create a set of protein set for annotation, a Mash sketch for automatic variant calling to the nearest neighbor, and calulate genome size statistics.</p>
 <p><code>--include_genus</code> will also download completed genomes from the <em>Staphylococcus</em> genus that will be used for the protein set. These completed genomes <strong>are not</strong> used for the sketch creation or genome size calculation.</p>
-<p><code>--cpus 4</code> use 4 cpus for downloading and the clustering step. Adjust this number according to your setup!</p>
+<p><code>--cpus 4</code> will use 4 cpus for downloading and the clustering step. Adjust this number according to your setup!</p>
 <div class="admonition info">
 <p class="admonition-title">Use CARD over MEGARes</p>
 <p>Staphopia v1 made use of MEGARes, for the purposes of this tutorial we are going to use the CARD database instead.</p>
@@ -719,22 +719,21 @@ rm -rf bactopia-datasets/
 <h4 id="single-sample">Single Sample<a class="headerlink" href="#single-sample" title="Permanent link">&para;</a></h4>
 <p>Let's start this by downloading a single sample from ENA, and processing it through Bactopia.</p>
 <div class="highlight"><pre><span></span>bactopia --accession SRX4563634 \
-         --dataset datasets/ \
-         --species staphylococcus-aureus \
+         --datasets datasets/ \
+         --species &quot;Staphylococcus aureus&quot; \
          --coverage 100 \
          --genome_size median \
-         --max_cpus 8 \
          --cpus 2 \
          --outdir ena-single-sample
 </pre></div>
 
 <p>So, what's happening here?</p>
 <p><code>--accession SRX4563634</code> is telling Bactopia to download FASTQs associated with Exeriment accession SRX4563634.</p>
-<p><code>--dataset datasets/</code> tells Bactopia your pre-built datasets are in the folder <code>datasets</code>.</p>
-<p><code>--species staphylococcus-aureus</code> tells Bactopia, within the datasets folder, use the species specific dataset for <em>S. aureus</em>.</p>
+<p><code>--datasets datasets/</code> tells Bactopia your pre-built datasets are in the folder <code>datasets</code>.</p>
+<p><code>--species "Staphylococcus aureus"</code> tells Bactopia, within the datasets folder, use the species specific dataset for <em>S. aureus</em>.</p>
 <p><code>--coverage 100</code> will limit the cleaned up FASTQ file to an estimated 100x coverage based on the genome size.</p>
 <p><code>--genome_size median</code> tells Bactopia to use the median genome size of completed <em>S. aureus</em> genomes. The minimum, maximum, median, and mean genome sizes were calculated during the dataset building step. If a genome size was not given, it would have been estimated by Mash.</p>
-<p><code>--max_cpus 8</code> and <code>--cpus 2</code> tells Bactopia to use a maximum of 8 cpus (<code>--max_cpus</code>) and each job within the workflow can use a maximum of 2 cpus (<code>--cpus</code>). So at most 8 jobs (using 1 cpu each) can run at a time, and a minimum of 4 jobs (using 2 cpus each). Adjust these parameters to fit your setup!</p>
+<p><code>--cpus 2</code> tells Bactopia to use a maximum of 2 cpus per process. Adjust this parameter to fit your setup!</p>
 <p><code>--outdir ena-single-sample</code> tells Bactopia to dump the results into the <code>ena-single-sample</code> folder. Please keep in mind, this will not stop Nextflow from creating files (.nextflow, trace.txt, etc...) and directories (work and .nextflow/) within your current directory.</p>
 <p>Once you launch this command, sit back, relax and watch the Nextflow give realtime updates for SRX4563634's analysis! </p>
 <p>The <strong>approximate completion time is ~15-30 minutes</strong> depending on the number of cpus given and download times from ENA.</p>
@@ -755,11 +754,10 @@ SRX4563690
 <p><em>Note: you may have 5 different accessions from the PRJNA480016 project.</em></p>
 <p>To process these samples, we will adjust our command used previously.</p>
 <div class="highlight"><pre><span></span>bactopia --accessions ena-accessions.txt \
-         --dataset datasets/ \
-         --species staphylococcus-aureus \
+         --datasets datasets/ \
+         --species &quot;Staphylococcus aureus&quot; \
          --coverage 100 \
          --genome_size median \
-         --max_cpus 8 \
          --cpus 2 \
          --outdir ena-multiple-samples
 </pre></div>
@@ -786,11 +784,10 @@ SRX4563690
 <div class="highlight"><pre><span></span>bactopia --R1 fastqs/SRX4563634_R1.fastq.gz \
          --R2 fastqs/SRX4563634_R2.fastq.gz \
          --sample SRX4563634 \
-         --dataset datasets/ \
-         --species staphylococcus-aureus \
+         --datasets datasets/ \
+         --species &quot;Staphylococcus aureus&quot; \
          --coverage 100 \
          --genome_size median \
-         --max_cpus 8 \
          --cpus 2 \
          --outdir local-single-sample
 </pre></div>
@@ -803,11 +800,10 @@ SRX4563690
 <p>To analyze single-end reads, the <code>--SE</code> parameter will replace <code>--R1</code> and <code>--R2</code>. 
 <div class="highlight"><pre><span></span>bactopia --SE fastqs/SRX4563634-SE.fastq.gz \
          --sample SRX4563634-SE \
-         --dataset datasets/ \
-         --species staphylococcus-aureus \
+         --datasets datasets/ \
+         --species &quot;Staphylococcus aureus&quot; \
          --coverage 100 \
          --genome_size median \
-         --max_cpus 8 \
          --cpus 2 \
          --outdir local-single-sample
 </pre></div></p>
@@ -824,11 +820,10 @@ SRX4563690
 <p>This command will try to create a FOFN for you. For this turorial, the FASTQ names are pretty straight forward and should produce a correct FOFN (or at least it should! ... hopefully!). If that wasn't the case for you, there are ways to <a href="/usage-basic/#generating-a-fofn">tweak <code>bactopia prepare</code></a>.</p>
 <p>Now we can use the <code>--fastqs</code> parameters to process samples in the FOFN.</p>
 <div class="highlight"><pre><span></span>bactopia --fastqs fastqs.txt \
-         --dataset datasets/ \
-         --species staphylococcus-aureus \
+         --datasets datasets/ \
+         --species &quot;Staphylococcus aureus&quot; \
          --coverage 100 \
          --genome_size median \
-         --max_cpus 8 \
          --cpus 2 \
          --outdir local-multiple-samples
 </pre></div>

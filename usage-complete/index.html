@@ -396,13 +396,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#-max_cpus-vs-cpus" title="--max_cpus vs --cpus" class="md-nav__link">
-    --max_cpus vs --cpus
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -623,13 +616,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#-max_cpus-vs-cpus" title="--max_cpus vs --cpus" class="md-nav__link">
-    --max_cpus vs --cpus
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -820,7 +806,7 @@
 </pre></div>
 
 <h2 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h2>
-<p>These optional parameters, while not required, will be quite useful (especially <code>--max_cpus</code> and <code>--cpus</code>!) to tweak.</p>
+<p>These optional parameters, while not required, will be quite useful to tweak.</p>
 <div class="highlight"><pre><span></span>    --coverage INT          Reduce samples to a given coverage
                                 Default: 100x
 
@@ -834,10 +820,17 @@
                                 Default: Mash estimate
 
     --outdir DIR            Directory to write results to
-                                Default .
+                                Default: .
+
+    --max_time INT          The maximum number of minutes a job should run before being halted.
+                                Default: 120 minutes
 
     --max_memory INT        The maximum amount of memory (Gb) allowed to a single process.
                                 Default: 32 Gb
+
+    --cpus INT              Number of processors made available to a single
+                                process. 
+                                Default: 4
 </pre></div>
 
 <h3 id="-genome_size"><code>--genome_size</code><a class="headerlink" href="#-genome_size" title="Permanent link">&para;</a></h3>
@@ -884,23 +877,17 @@
 <p class="admonition-title">Mash may not be the most accurate estimate</p>
 <p>Mash is very convenient to quickly estimate a genome size, but it may not be the most accurate in all cases and will differ between samples. It is recommended that when possible a known genome size or one based off completed genomes should be used. </p>
 </div>
-<h3 id="-max_cpus-vs-cpus"><code>--max_cpus</code> vs <code>--cpus</code><a class="headerlink" href="#-max_cpus-vs-cpus" title="Permanent link">&para;</a></h3>
-<p>By default when Nextflow executes, it uses all available cpus to queue up processes. As you might imagine, if you are on a single server with multiple users, this approach of using all cpus might annoy other users! (Whoops sorry!) To circumvent this feature, two parmeters have been included <code>--max_cpus</code> and <code>--cpus</code>.</p>
-<div class="highlight"><pre><span></span>    --max_cpus INT          The maximum number of processors this workflow
-                                should have access to at any given moment
-                                Default: 1
-
-    --cpus INT              Number of processors made available to a single
-                                process. If greater than &quot;--max_cpus&quot; it
-                                will be set equal to &quot;--max_cpus&quot;
-                                Default: 1
-</pre></div>
-
-<p>What <code>--max_cpus</code> does is specify to Nextflow the maximum number of cpus it is allowed to occupy at any given time. <code>--cpus</code> on the other hand, specifies how many cpus any given step (qc, assembly, annotation, etc...) can occupy. </p>
-<p>By default <code>--max_cpus</code> is set to 1 and if <code>--cpus</code> is set to a value greater than <code>--max_cpus</code> it will be set equal to <code>--max_cpus</code>. This appoach errs on the side of caution, by not occupying all cpus on the server without the users consent!</p>
 <h2 id="helpers">Helpers<a class="headerlink" href="#helpers" title="Permanent link">&para;</a></h2>
 <p>The following parameters are useful to test to test input parameters.
-<div class="highlight"><pre><span></span>    --available_datasets    Print a list of available datasets found based
+<div class="highlight"><pre><span></span>    --infodir DIR           Directory to write Nextflow summary files to
+                                Default: ./bactopia-info
+
+    --condadir DIR          Directory to Nextflow should use for Conda environments
+                                Default: Bactopia&#39;s Nextflow directory
+
+    --nfdir                 Print directory Nextflow has pulled Bactopia to
+
+    --available_datasets    Print a list of available datasets found based
                                 on location given by &quot;--datasets&quot;
 
     --example_fastqs        Print example of expected input for FASTQs file
@@ -1019,7 +1006,7 @@
 
 <h3 id="assembly">Assembly<a class="headerlink" href="#assembly" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span>    --shovill_ram INT       Try to keep RAM usage below this many GB
-                                Default: 32
+                                Default: 6 GB
 
     --assembler STR         Assembler: megahit velvet skesa spades
                                 Default: skesa
@@ -1063,7 +1050,10 @@
 </pre></div>
 
 <h3 id="counting-31mers">Counting 31mers<a class="headerlink" href="#counting-31mers" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>    --keep_singletons       Keep all counted 31-mers
+<div class="highlight"><pre><span></span>    --cortex_ram INT        Try to keep RAM usage below this many GB
+                                Default: 8 GB
+
+    --keep_singletons       Keep all counted 31-mers
                                 Default: Filter out singletons
 </pre></div>
 
@@ -1168,7 +1158,10 @@
 </pre></div>
 
 <h3 id="minmer-sketch">Minmer Sketch<a class="headerlink" href="#minmer-sketch" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>    --mash_sketch INT       Sketch size. Each sketch will have at most this
+<div class="highlight"><pre><span></span>    --minmer_ram INT        Try to keep RAM usage below this many GB
+                                Default: 5 GB
+
+    --mash_sketch INT       Sketch size. Each sketch will have at most this
                                 many non-redundant min-hashes.
                                 Default: 10000
 
@@ -1178,7 +1171,10 @@
 </pre></div>
 
 <h3 id="quality-control">Quality Control<a class="headerlink" href="#quality-control" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>    --adapters FASTA        Illumina adapters to remove
+<div class="highlight"><pre><span></span>    --qc_ram INT            Try to keep RAM usage below this many GB
+                                Default: 3 GB
+
+    --adapters FASTA        Illumina adapters to remove
                                 Default: BBmap adapters
 
     --adapter_k INT         Kmer length used for finding adapters. Adapters
@@ -1276,7 +1272,7 @@
 
 <h3 id="variant-calling">Variant Calling<a class="headerlink" href="#variant-calling" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span>    --snippy_ram INT        Try and keep RAM under this many GB
-                                Default: 8
+                                Default: 8 GB
 
     --mapqual INT           Minimum read mapping quality to consider
                                 Default: 60

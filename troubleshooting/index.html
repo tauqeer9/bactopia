@@ -380,9 +380,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#past-errors" title="Past Errors" class="md-nav__link">
+    Past Errors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#failed-to-create-conda-environment" title="Failed to create Conda Environment" class="md-nav__link">
     Failed to create Conda Environment
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -430,9 +443,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#past-errors" title="Past Errors" class="md-nav__link">
+    Past Errors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#failed-to-create-conda-environment" title="Failed to create Conda Environment" class="md-nav__link">
     Failed to create Conda Environment
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -461,7 +487,16 @@
 <p class="admonition-title">Don't see your error/bug? Post an issue on GitHub</p>
 <p>If you've encountered an error or bug not seen here, please post an issue at <a href="https://github.com/bactopia/bactopia/issues">Bactopia GitHub Issues</a>. This will help greatly to track down the error and fix it!</p>
 </div>
+<h2 id="past-errors">Past Errors<a class="headerlink" href="#past-errors" title="Permanent link">&para;</a></h2>
+<div class="admonition error">
+<p class="admonition-title">These should have been fixed.</p>
+<p>The following errors should have been fixed. If you are still receiving them, please make sure you are using the most up to date version of Bactopia. If you are, and you are still recieving one of these errors, please reopen the associated issue on GitHub. Thanks!</p>
+</div>
 <h3 id="failed-to-create-conda-environment">Failed to create Conda Environment<a class="headerlink" href="#failed-to-create-conda-environment" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">This was fixed in v1.2.1</p>
+<p>A new function <code>bactopia build</code> was introduced that builds the Conda environments outside of Nextflow. If you are still receiving this error please reopen the <a href="https://github.com/bactopia/bactopia/issues/13">Better handling of conda environments?</a> issue.</p>
+</div>
 <p>Occasionally on the first run of Bactopia you will encounter this error: 
 <div class="highlight"><pre><span></span>Caused by:
   Failed to create Conda environment
@@ -471,9 +506,6 @@
     InvalidArchiveError(&quot;Error with archive /home/rpetit/miniconda3/envs/bactopia/pkgs/python-3.7.3-h33d41f4_1.tar.bz2.  You probably need to delete and re-download or re-create this file.  Message from libarchive was:\n\nFailed to create dir &#39;lib&#39;&quot;,)
 </pre></div></p>
 <p>While it may look like this is related to Nextflow, it is actually a Conda error that occurs when installing multiple environments at once which Nextflow likes to do. This can also occur from a timeout or loss of internet connectivity (under a different error name).</p>
-<p><strong>Recommended Solution</strong><br />
-Using <code>--dry_run</code> at runtime will run Bactopia with dummy data on a single core to prevent parallel creation of conda environments. This process will take only as long as it takes to create the environments.</p>
-<p>If you have suggestions for how to better handle this, check out the submitted <a href="https://github.com/bactopia/bactopia/issues/13">Better handling of conda environments?</a> issue. Your feedback would be greatly appreciated!</p>
                 
                   
                 
