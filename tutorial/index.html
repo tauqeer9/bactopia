@@ -326,8 +326,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#samples-on-ena" title="Samples on ENA" class="md-nav__link">
-    Samples on ENA
+  <a href="#samples-on-sra" title="Samples on SRA" class="md-nav__link">
+    Samples on SRA
   </a>
   
     <nav class="md-nav">
@@ -547,8 +547,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#samples-on-ena" title="Samples on ENA" class="md-nav__link">
-    Samples on ENA
+  <a href="#samples-on-sra" title="Samples on SRA" class="md-nav__link">
+    Samples on SRA
   </a>
   
     <nav class="md-nav">
@@ -664,8 +664,8 @@ For this tutorial, we will attempt to replicate the <a href="https://staphopia.e
 <li>Build datasets</li>
 <li>Acquire Staphopia datasets</li>
 <li>Use Bactopia to process:<ul>
-<li>A sample from ENA</li>
-<li>Multiple samples from ENA</li>
+<li>A sample from SRA/ENA</li>
+<li>Multiple samples from SRA/ENA</li>
 <li>Single local sample</li>
 <li>Multiple local samples using FOFN</li>
 </ul>
@@ -715,9 +715,9 @@ rm -rf bactopia-datasets/
 <p>That should be it. You should now have the Staphopia v1 datasets included with your recentely built datasets (e.g. <em>S. aureus</em> protein clusters, RefSeq sketch, etc...)</p>
 <h2 id="running-bactopia">Running Bactopia<a class="headerlink" href="#running-bactopia" title="Permanent link">&para;</a></h2>
 <p>OK! Get your servers started up! It is time to get processing!</p>
-<h3 id="samples-on-ena">Samples on ENA<a class="headerlink" href="#samples-on-ena" title="Permanent link">&para;</a></h3>
+<h3 id="samples-on-sra">Samples on SRA<a class="headerlink" href="#samples-on-sra" title="Permanent link">&para;</a></h3>
 <h4 id="single-sample">Single Sample<a class="headerlink" href="#single-sample" title="Permanent link">&para;</a></h4>
-<p>Let's start this by downloading a single sample from ENA, and processing it through Bactopia.</p>
+<p>Let's start this by downloading a single sample from the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a> (SRA), and processing it through Bactopia.</p>
 <div class="highlight"><pre><span></span>bactopia --accession SRX4563634 \
          --datasets datasets/ \
          --species &quot;Staphylococcus aureus&quot; \
@@ -735,6 +735,10 @@ rm -rf bactopia-datasets/
 <p><code>--genome_size median</code> tells Bactopia to use the median genome size of completed <em>S. aureus</em> genomes. The minimum, maximum, median, and mean genome sizes were calculated during the dataset building step. If a genome size was not given, it would have been estimated by Mash.</p>
 <p><code>--cpus 2</code> tells Bactopia to use a maximum of 2 cpus per process. Adjust this parameter to fit your setup!</p>
 <p><code>--outdir ena-single-sample</code> tells Bactopia to dump the results into the <code>ena-single-sample</code> folder. Please keep in mind, this will not stop Nextflow from creating files (.nextflow, trace.txt, etc...) and directories (work and .nextflow/) within your current directory.</p>
+<div class="admonition info">
+<p class="admonition-title">Use --use_ena to download from ENA</p>
+<p>If you append <code>--use_ena</code> to the command above the FASTQ files for SRX4563634 will be downloaded from the <a href="https://www.ebi.ac.uk/ena">European Nucleotide Archive</a> (ENA) instead of SRA.</p>
+</div>
 <p>Once you launch this command, sit back, relax and watch the Nextflow give realtime updates for SRX4563634's analysis! </p>
 <p>The <strong>approximate completion time is ~15-30 minutes</strong> depending on the number of cpus given and download times from ENA.</p>
 <p>Once complete, the results from numerous tools available to you in <code>ena-single-sample/SRX4563634/</code>. </p>
@@ -762,11 +766,11 @@ SRX4563690
          --outdir ena-multiple-samples
 </pre></div>
 
-<p>Instead of <code>--accession</code> we are now using <code>--accessions ena-accessions.txt</code> which tells Bactopia to read <code>ena-accessions.txt</code>, and download each Experiment accession from ENA and then process it.</p>
-<p>At this point, you might want to go for a walk or make yourself a coffee! This step has an <strong>approximate completion time of ~45-120 minutes</strong>, which again is fully dependent on the cpus used and the download times from ENA.</p>
+<p>Instead of <code>--accession</code> we are now using <code>--accessions ena-accessions.txt</code> which tells Bactopia to read <code>ena-accessions.txt</code>, and download each Experiment accession from SRA (for ENA add <code>--use_ena</code>) and then process it.</p>
+<p>At this point, you might want to go for a walk or make yourself a coffee! This step has an <strong>approximate completion time of ~45-120 minutes</strong>, which again is fully dependent on the cpus used and the download times from SRA (or ENA).</p>
 <p>Once this is complete, the results for all five samples will be found in the <code>ena-multiple-samples</code> directory. Each sample will have there own folder of results.</p>
 <h3 id="local-samples">Local Samples<a class="headerlink" href="#local-samples" title="Permanent link">&para;</a></h3>
-<p>So for the local samples, we're going to recycle some of the samples we downloaded from ENA.</p>
+<p>So for the local samples, we're going to recycle some of the samples we downloaded from SRA/ENA.</p>
 <p>First let's make a directory to put the FASTQs into:
 <div class="highlight"><pre><span></span>mkdir fastqs
 </pre></div></p>
@@ -793,7 +797,7 @@ SRX4563690
 </pre></div>
 
 <p>Now Bactopia will recognize the <code>--R1</code> and <code>--R2</code> parameters as paired-end reads and process. The <code>--sample</code> is required and will be used for naming the output.</p>
-<p>Similar to the single ENA sample, the <strong>approximate completion time is ~15-30 minutes</strong> depending on the number of cpus given.</p>
+<p>Similar to the single SRA/ENA sample, the <strong>approximate completion time is ~15-30 minutes</strong> depending on the number of cpus given.</p>
 <p>Once complete, results can be found in <code>local-single-sample/SRX4563634/</code>. </p>
 <h5 id="single-end">Single-End<a class="headerlink" href="#single-end" title="Permanent link">&para;</a></h5>
 <p>In the case of Illumina reads, you're very unlikely to produce single-end reads, but they do exist in the wild (early days of Illumina!). Nevertheless, because single-end reads do exist, single-end support was built into Bactopia.</p>

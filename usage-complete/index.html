@@ -887,6 +887,17 @@
 
     --nfdir                 Print directory Nextflow has pulled Bactopia to
 
+    --overwrite             Nextflow will overwrite existing output files.
+                                Default: false
+
+    --conatainerPath        Path to Singularity containers to be used by the &#39;slurm&#39;
+                                profile.
+                                Default: /opt/bactopia/singularity
+
+    --sleep_time            After reading datases, the amount of time (seconds) Nextflow
+                                will wait before execution.
+                                Default: 5 seconds
+
     --available_datasets    Print a list of available datasets found based
                                 on location given by &quot;--datasets&quot;
 
@@ -1058,13 +1069,17 @@
 </pre></div>
 
 <h3 id="download-fastq">Download FASTQ<a class="headerlink" href="#download-fastq" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span>    --aspera_speed STR      Speed at which Aspera Connect will download.
-                                Default: 100M
-
-    --max_retry INT         Maximum times to retry downloads
+<div class="highlight"><pre><span></span>    --max_retry INT         Maximum times to retry downloads
                                 Default: 10
 
-    --ftp_only              Only use FTP to download FASTQs from ENA
+    --use_ena               Download FASTQs from ENA with Aspera Connect.
+                                Default: Download from SRA
+
+    --ftp_only              If &quot;--use_ena&quot; is enabled, FTP will be used to
+                                download FASTQs from ENA.
+
+    --aspera_speed STR      Speed at which Aspera Connect will download.
+                                Default: 100M
 </pre></div>
 
 <h3 id="download-reference-genome">Download Reference Genome<a class="headerlink" href="#download-reference-genome" title="Permanent link">&para;</a></h3>

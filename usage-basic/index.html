@@ -441,8 +441,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#european-nucleotide-archive" title="European Nucleotide Archive" class="md-nav__link">
-    European Nucleotide Archive
+  <a href="#ena-sra" title="ENA &amp; SRA" class="md-nav__link">
+    ENA &amp; SRA
   </a>
   
     <nav class="md-nav">
@@ -700,8 +700,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#european-nucleotide-archive" title="European Nucleotide Archive" class="md-nav__link">
-    European Nucleotide Archive
+  <a href="#ena-sra" title="ENA &amp; SRA" class="md-nav__link">
+    ENA &amp; SRA
   </a>
   
     <nav class="md-nav">
@@ -846,6 +846,17 @@ Nextflow Related Parameters:
                                 Default: Bactopia&#39;s Nextflow directory
 
     --nfdir                 Print directory Nextflow has pulled Bactopia to
+
+    --overwrite             Nextflow will overwrite existing output files.
+                                Default: false
+
+    --conatainerPath        Path to Singularity containers to be used by the &#39;slurm&#39;
+                                profile.
+                                Default: /opt/bactopia/singularity
+
+    --sleep_time            After reading datases, the amount of time (seconds) Nextflow
+                                will wait before execution.
+                                Default: 5 seconds
 
 Useful Parameters:
     --available_datasets    Print a list of available datasets found based
@@ -992,15 +1003,17 @@ Exiting
 </pre></div>
 
 <p>In the above example, there are mulitple errors. Lines 4 and 5 (<code>LINE 4:ERROR</code> or <code>LINE 5:ERROR</code>) suggest that based on the given paths the FASTQs do not exist. The sample name <code>test002</code> has been used multiple times, and must be corrected. There is also an issue with the header line that must be looked into.</p>
-<h3 id="european-nucleotide-archive">European Nucleotide Archive<a class="headerlink" href="#european-nucleotide-archive" title="Permanent link">&para;</a></h3>
-<p>There are a lot of publicly avilable sequences, and you might want to include some of those in your analysis! If that sounds like you, Bactopia has that built in for you! You can give a single <em>Experiment</em> accession (<code>--accession</code>) or a file where each line is a single <em>Experiment</em> accession (<code>--accessions</code>). Bactopia will then query ENA to determine <em>Run</em> accession(s) associated with the given Experiment accession and proceed download (from ENA) corresponding FASTQ files. After the download is completed, it will be processed through Bactopia.</p>
+<h3 id="ena-sra">ENA &amp; SRA<a class="headerlink" href="#ena-sra" title="Permanent link">&para;</a></h3>
+<p>There are a lot of publicly avilable sequences available from the <a href="https://www.ebi.ac.uk/ena">European Nucleotide Archive</a> (ENA) and the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a> (SRA). There's a good chance you might want to include some of those sequences in your analysis! If that sounds like you, Bactopia has that built in for you! You can give a single <em>Experiment</em> accession (<code>--accession</code>) or a file where each line is a single <em>Experiment</em> accession (<code>--accessions</code>). Bactopia will then query ENA to determine <em>Run</em> accession(s) associated with the given Experiment accession and proceed download the corresponding FASTQ files from either the SRA (default) or ENA (<code>--use_ena</code>). After the download is completed, it will be processed through Bactopia.</p>
 <div class="admonition info">
 <p class="admonition-title">Use --accession for a Single Experiment Accession</p>
-<p><code>bactopia --accession SRX476958</code></p>
+<p>SRA: <code>bactopia --accession SRX476958</code>
+ENA: <code>bactopia --accession SRX476958 --use_ena</code></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Use --accessions for Multiple Experiment Accessions</p>
-<p><code>bactopia --accessions my-accessions.txt</code></p>
+<p>SRA: <code>bactopia --accessions my-accessions.txt</code>
+ENA: <code>bactopia --accessions my-accessions.txt --use_ena</code></p>
 </div>
 <h4 id="generating-accession-list">Generating Accession List<a class="headerlink" href="#generating-accession-list" title="Permanent link">&para;</a></h4>
 <p><code>bactopia search</code> has been made to help assist in generating a list of Experiment accessions to be procesed by Bactopia (via <code>--accessions</code>). Users can provide a Taxon ID (e.g. 1280), a binary name (e.g. Staphylococcus aureus), or Study accessions (e.g. PRJNA480016). This value is then queried against ENA's <a href="https://www.ebi.ac.uk/ena/browse/search-rest">Data Warehouse API</a>), and a list of all Experiment accessions associated with the query is returned.</p>
